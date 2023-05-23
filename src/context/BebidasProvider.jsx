@@ -4,23 +4,21 @@ import axios from "axios";
 const BebidasContext = createContext();
 
 const BebidasProvider = ({ children }) => {
-  const obtenerCategorias = async () => {
+  const [bebidas, setBebidas] = useState([]);
+  const consultarBebida = async (datos) => {
     try {
-      const url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list";
+      const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${datos.nombre}&c=${datos.categoria}`;
       const { data } = await axios.get(url);
-      setCategorias(data.drinks);
+      setBebidas(data.drinks);
     } catch (error) {
       console.error(error);
     }
   };
 
-  useEffect(() => {
-    // obtenerCategorias();
-    return () => {};
-  }, []);
-
   return (
-    <BebidasContext.Provider value={{}}>{children}</BebidasContext.Provider>
+    <BebidasContext.Provider value={{ consultarBebida, bebidas }}>
+      {children}
+    </BebidasContext.Provider>
   );
 };
 
