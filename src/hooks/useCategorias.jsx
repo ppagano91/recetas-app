@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import CatgeoriasContext from "../context/CategoriaProvider";
 
-useCategorias = () => {
+const useCategorias = () => {
   return useContext(CatgeoriasContext);
 };
 
