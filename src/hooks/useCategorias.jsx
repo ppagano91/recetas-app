@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import CatgeoriasContext from "../context/CategoriaProvider";
 
-const useCategorias = () => {
+const useBebidas = () => {
   return useContext(CatgeoriasContext);
 };
 
-export default useCategorias;
+export default useBebidas;
